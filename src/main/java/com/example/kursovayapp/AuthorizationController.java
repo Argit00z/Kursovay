@@ -29,7 +29,9 @@ public class AuthorizationController {
 
     @FXML
     void initialize() {
+        authSiginButton.setOnAction(event -> {
 
+        });
 
     }
 
