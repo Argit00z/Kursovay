@@ -11,17 +11,19 @@
     <children>
         <AnchorPane layoutY="68.0" prefHeight="333.0" prefWidth="700.0" style="-fx-background-color: #F7EAC4;">
             <children>
-                <TextField fx:id="login_field" layoutX="203.0" layoutY="122.0" prefHeight="25.0" prefWidth="300.0" promptText="Логин" style="-fx-border-color: #00000;" />
-                <PasswordField fx:id="password_field" layoutX="203.0" layoutY="154.0" prefHeight="25.0" prefWidth="300.0" promptText="Пароль" style="-fx-border-color: #00000;" />
-                <Label layoutX="277.0" layoutY="68.0" prefHeight="39.0" prefWidth="152.0" text="Авторизация" textFill="#000000b8">
+                <TextField fx:id="singUpPhoneNumber" layoutX="203.0" layoutY="76.0" prefHeight="25.0" prefWidth="300.0" promptText="Номер телефона" style="-fx-border-color: #00000;" />
+                <PasswordField fx:id="singUpPassword" layoutX="204.0" layoutY="190.0" prefHeight="25.0" prefWidth="300.0" promptText="Придумайте пароль" style="-fx-border-color: #00000;" />
+                <Label layoutX="278.0" layoutY="22.0" prefHeight="39.0" prefWidth="152.0" text="Регистрация" textFill="#000000b8">
                     <font>
                         <Font name="Arial" size="25.0" />
                     </font>
                 </Label>
-                <Button fx:id="authSiginButton" layoutX="301.0" layoutY="202.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="105.0" style="-fx-background-color: #F7F3E6; -fx-border-color: #E7C561; -fx-border-radius: 5;" text="Войти">
+                <Button fx:id="authSiginButton" layoutX="245.0" layoutY="229.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="210.0" style="-fx-background-color: #F7F3E6; -fx-border-color: #E7C561; -fx-border-radius: 5;" text="Зарегистрироваться">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font></Button>
+            <TextField fx:id="singUpName" layoutX="203.0" layoutY="115.0" prefHeight="25.0" prefWidth="300.0" promptText="Имя" style="-fx-border-color: #00000;" />
+            <PasswordField fx:id="singUpAdress" layoutX="203.0" layoutY="152.0" prefHeight="25.0" prefWidth="300.0" promptText="Адрес для доставки" style="-fx-border-color: #00000;" />
             </children>
         </AnchorPane>
         <Label layoutX="206.0" layoutY="16.0" text="Delivery Service">
@@ -29,9 +31,5 @@
                 <Font name="Arial" size="40.0" />
             </font>
         </Label>
-        <Button fx:id="loginSiginUpButton" layoutX="570.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color: #F7F3E6;" text="Регистрация">
-            <font>
-                <Font name="Arial" size="15.0" />
-            </font></Button>
     </children>
 </AnchorPane>
