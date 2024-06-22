@@ -32,12 +32,24 @@ public class SignUpController {
 
     @FXML
     void initialize() {
-        DatabaseHandler dbHandler = new DatabaseHandler();
         authSiginButton.setOnAction(event -> {
-            dbHandler.signUpUser(singUpName.getText(),  singUpAddress.getText(),
-                    singUpPassword.getText(), singUpPhoneNumber.getText());
+
+            singUpNewClient();
+
         });
 
+    }
+
+    private void singUpNewClient() {
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        String client_name = singUpName.getText();
+        String client_phone = singUpPhoneNumber.getText();
+        String client_address = singUpAddress.getText();
+        String password = singUpPassword.getText();
+
+        Client client = new Client(client_name, client_phone, client_address, password);
+
+        dbHandler.signUpUser(client);
     }
 
 }

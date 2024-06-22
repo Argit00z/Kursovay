@@ -17,17 +17,17 @@ public class DatabaseHandler extends Configs {
 
         return dbConnection;
     }
-    public  void signUpUser(String client_name, String client_phone, String client_address, String password){
+    public  void signUpUser(Client client){
         String insert = "INSERT INTO " + Const.CLIENT_TABLE + "(" + Const.CLIENT_ADDRESS + "," +
                 Const.CLIENT_NAME + "," + Const.CLIENT_PASSWORD + "," + Const.CLIENT_PHONE + ")" +
                 "VALUES(?,?,?,?)";
 
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(insert);
-            prSt.setString(1, client_address);
-            prSt.setString(2, client_name);
-            prSt.setString(3, password);
-            prSt.setString(4, client_phone);
+            prSt.setString(1, client.getClient_address());
+            prSt.setString(2, client.getClient_name());
+            prSt.setString(3, client.getPassword());
+            prSt.setString(4, client.getClient_phone());
             prSt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
