@@ -34,6 +34,18 @@ public class AuthorizationController {
 
     @FXML
     void initialize() {
+
+        authSiginButton.setOnAction(event -> {
+            String loginText = login_field.getText().trim();
+            String loginPassword = password_field.getText().trim();
+
+            if (!loginText.equals("") && !loginPassword.equals("")){
+                loginUser(loginText, loginPassword);
+            }else {
+                System.out.println("Login and password is empty");
+            }
+        });
+
         loginSiginUpButton.setOnAction(event -> {
             loginSiginUpButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader(AuthorizationApplication.class.getResource("SignUp-view.fxml"));
@@ -50,6 +62,10 @@ public class AuthorizationController {
             stage.setScene(new Scene(root));
             stage.showAndWait();
         });
+
+    }
+
+    private void loginUser(String loginText, String loginPassword) {
 
     }
 

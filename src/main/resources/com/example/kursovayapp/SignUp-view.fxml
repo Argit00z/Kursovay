@@ -23,7 +23,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font></Button>
             <TextField fx:id="singUpName" layoutX="203.0" layoutY="115.0" prefHeight="25.0" prefWidth="300.0" promptText="Имя" style="-fx-border-color: #00000;" />
-            <PasswordField fx:id="singUpAdress" layoutX="203.0" layoutY="152.0" prefHeight="25.0" prefWidth="300.0" promptText="Адрес для доставки" style="-fx-border-color: #00000;" />
+            <TextField fx:id="singUpAddress" layoutX="204.0" layoutY="154.0" prefHeight="25.0" prefWidth="300.0" promptText="Адрес для доставки" style="-fx-border-color: #00000;" />
             </children>
         </AnchorPane>
         <Label layoutX="206.0" layoutY="16.0" text="Delivery Service">

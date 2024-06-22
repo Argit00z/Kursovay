@@ -19,7 +19,7 @@ public class SignUpController {
     private Button authSiginButton;
 
     @FXML
-    private PasswordField singUpAdress;
+    private TextField singUpAddress;
 
     @FXML
     private TextField singUpName;
@@ -32,7 +32,11 @@ public class SignUpController {
 
     @FXML
     void initialize() {
-
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        authSiginButton.setOnAction(event -> {
+            dbHandler.signUpUser(singUpName.getText(),  singUpAddress.getText(),
+                    singUpPassword.getText(), singUpPhoneNumber.getText());
+        });
 
     }
 
