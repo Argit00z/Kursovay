@@ -5,6 +5,8 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import animations.Shake;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -87,6 +89,12 @@ public class AuthorizationController {
 
         if (counter >= 1){
             System.out.println("Success!");
+        }else {
+            Shake clientloginAnim = new Shake(login_field);
+            Shake clientpasswordAnim = new Shake(password_field);
+            clientloginAnim.playAnim();
+            clientpasswordAnim.playAnim();
+
         }
     }
 
