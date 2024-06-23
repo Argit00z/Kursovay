@@ -2,6 +2,8 @@ package com.example.kursovayapp;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -66,7 +68,26 @@ public class AuthorizationController {
     }
 
     private void loginUser(String loginText, String loginPassword) {
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        Client client = new Client();
+        client.setClient_phone(loginText);
+        client.setPassword(loginPassword);
+        ResultSet result = dbHandler.getClient(client);
+        
+        int counter = 0;
 
+        while (true){
+            try {
+                if (!result.next()) break;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            counter++;
+        }
+
+        if (counter >= 1){
+            System.out.println("Success!");
+        }
     }
 
 }

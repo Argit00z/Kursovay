@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 public class DatabaseHandler extends Configs {
     Connection dbConnection;
 
@@ -34,5 +35,26 @@ public class DatabaseHandler extends Configs {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ResultSet getClient(Client client){
+        ResultSet restSet = null;
+
+        String select = "SELECT * FROM " + Const.CLIENT_TABLE + " WHERE " +
+                Const.CLIENT_PHONE + "=? AND " + Const.CLIENT_PASSWORD + "=?";
+
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(select);
+            prSt.setString(1, client.getClient_phone());
+            prSt.setString(2, client.getPassword());
+
+            restSet = prSt.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return restSet;
     }
 }

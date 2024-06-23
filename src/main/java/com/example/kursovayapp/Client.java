@@ -14,6 +14,10 @@ public class Client {
         this.password = password;
     }
 
+    public Client() {
+
+    }
+
     public String getClient_name() {
         return client_name;
     }
