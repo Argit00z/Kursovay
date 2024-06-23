@@ -51,20 +51,7 @@ public class AuthorizationController {
         });
 
         loginSiginUpButton.setOnAction(event -> {
-            loginSiginUpButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader(AuthorizationApplication.class.getResource("SignUp-view.fxml"));
-
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
+            openNewScene("SignUp-view.fxml");
         });
 
     }
@@ -88,7 +75,7 @@ public class AuthorizationController {
         }
 
         if (counter >= 1){
-            System.out.println("Success!");
+            openNewScene("User-view.fxml");
         }else {
             Shake clientloginAnim = new Shake(login_field);
             Shake clientpasswordAnim = new Shake(password_field);
@@ -96,6 +83,23 @@ public class AuthorizationController {
             clientpasswordAnim.playAnim();
 
         }
+    }
+
+    public void openNewScene(String window){
+        loginSiginUpButton.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader(AuthorizationApplication.class.getResource(window));
+
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
     }
 
 }
