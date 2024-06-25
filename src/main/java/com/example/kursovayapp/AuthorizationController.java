@@ -7,14 +7,18 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import animations.Shake;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class AuthorizationController {
 
@@ -37,6 +41,9 @@ public class AuthorizationController {
     private PasswordField password_field;
 
     @FXML
+    private AnchorPane rootpane;
+
+    @FXML
     void initialize() {
 
         authSiginButton.setOnAction(event -> {
@@ -44,19 +51,27 @@ public class AuthorizationController {
             String loginPassword = password_field.getText().trim();
 
             if (!loginText.equals("") && !loginPassword.equals("")){
-                loginUser(loginText, loginPassword);
+                try {
+                    loginUser(loginText, loginPassword);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }else {
                 System.out.println("Login and password is empty");
             }
         });
 
         loginSiginUpButton.setOnAction(event -> {
-            openNewScene("SignUp-view.fxml");
+            try {
+                openNewScene("SignUp-view.fxml");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
 
     }
 
-    private void loginUser(String loginText, String loginPassword) {
+    private void loginUser(String loginText, String loginPassword) throws IOException {
         DatabaseHandler dbHandler = new DatabaseHandler();
         Client client = new Client();
         client.setClient_phone(loginText);
@@ -85,19 +100,9 @@ public class AuthorizationController {
         }
     }
 
-    public void openNewScene(String window){
-
-        FXMLLoader loader = new FXMLLoader(AuthorizationApplication.class.getResource(window));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        loginSiginUpButton.getScene().getWindow().hide();
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.showAndWait();
+    public void openNewScene(String window) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource(window));
+        rootpane.getChildren().setAll(pane);
     }
 
 }
