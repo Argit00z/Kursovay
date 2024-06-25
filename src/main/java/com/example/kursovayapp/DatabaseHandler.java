@@ -37,6 +37,12 @@ public class DatabaseHandler extends Configs {
         }
     }
 
+//    public void addOrder(Order order){
+//        String insert = "INSERT INTO " + Const.ORDER_TABLE + "(" + Const.O + "," +
+//                Const.CLIENT_NAME + "," + Const.CLIENT_PASSWORD + "," + Const.CLIENT_PHONE + ")" +
+//                "VALUES(?,?,?,?)";
+//    }
+
     public ResultSet getClient(Client client){
         ResultSet restSet = null;
 
@@ -57,4 +63,6 @@ public class DatabaseHandler extends Configs {
 
         return restSet;
     }
+
+
 }

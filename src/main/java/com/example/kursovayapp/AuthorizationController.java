@@ -82,7 +82,8 @@ public class AuthorizationController {
 
         while (true){
             try {
-                if (!result.next()) break;
+                if (!result.next())
+                    break;
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

@@ -24,7 +24,7 @@
                </font></Button>
          </children>
       </AnchorPane>
-      <Label layoutX="206.0" layoutY="16.0" text="Delivery Service">
+      <Label layoutX="206.0" layoutY="16.0" text="Сервис доставки">
          <font>
             <Font name="Arial" size="40.0" />
          </font>

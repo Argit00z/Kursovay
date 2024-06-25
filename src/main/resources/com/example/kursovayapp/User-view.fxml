@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -9,14 +11,28 @@
     <children>
         <AnchorPane layoutY="68.0" prefHeight="333.0" prefWidth="700.0" style="-fx-background-color: #F7EAC4;">
             <children>
-                <Label layoutX="233.0" layoutY="53.0" prefHeight="47.0" prefWidth="234.0" text="Отправить посылку" textFill="#000000b8">
+                <Label layoutX="233.0" layoutY="14.0" prefHeight="47.0" prefWidth="234.0" text="Отправить посылку" textFill="#000000b8">
                     <font>
                         <Font name="Arial" size="25.0" />
                     </font>
                 </Label>
+            <TextField fx:id="recipientPhoneNumber" layoutX="211.0" layoutY="105.0" prefHeight="25.0" prefWidth="300.0" promptText="Номер телефона получателя" style="-fx-border-color: #CECBC1; -fx-border-radius: 5; -fx-border-style: solid; -fx-background-color: white;" />
+            <TextField fx:id="weightPackage" layoutX="211.0" layoutY="153.0" prefHeight="25.0" prefWidth="300.0" promptText="Вес г." style="-fx-border-color: #CECBC1; -fx-border-radius: 5; -fx-border-style: solid; -fx-background-color: white;" />
+            <ChoiceBox fx:id="urgencyPackage" layoutX="212.0" layoutY="203.0" prefHeight="25.0" prefWidth="297.0" />
+            <ChoiceBox fx:id="centerName" layoutX="213.0" layoutY="255.0" prefHeight="25.0" prefWidth="297.0" />
+            <Label layoutX="212.0" layoutY="172.0" prefHeight="47.0" prefWidth="234.0" text="Срочность доставки" textFill="#000000b8">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="214.0" layoutY="219.0" prefHeight="47.0" prefWidth="234.0" text="Центр доставки" textFill="#000000b8">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
-        <Label layoutX="206.0" layoutY="16.0" text="Delivery Service">
+        <Label layoutX="206.0" layoutY="16.0" text="Сервис доставки">
             <font>
                 <Font name="Arial" size="40.0" />
             </font>
