@@ -8,11 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class SignUpController {
+public class SettingsController {
 
     @FXML
     private ResourceBundle resources;
@@ -21,57 +19,31 @@ public class SignUpController {
     private URL location;
 
     @FXML
-    private Button authSiginButton;
-
-    @FXML
     private Button backButton;
 
     @FXML
-    private TextField singUpAddress;
-
-    @FXML
-    private TextField singUpName;
-
-    @FXML
-    private PasswordField singUpPassword;
-
-    @FXML
-    private TextField singUpPhoneNumber;
+    private Button quitButton;
 
     @FXML
     void initialize() {
-        authSiginButton.setOnAction(event -> {
 
-            singUpNewClient();
-
-        });
         backButton.setOnAction(event -> {
+            openNewScene("User-view.fxml");
+        });
+        quitButton.setOnAction(event -> {
             openNewScene("Authorization-view.fxml");
         });
 
-    }
 
-
-
-    private void singUpNewClient() {
-        DatabaseHandler dbHandler = new DatabaseHandler();
-        String client_name = singUpName.getText();
-        String client_phone = singUpPhoneNumber.getText();
-        String client_address = singUpAddress.getText();
-        String password = singUpPassword.getText();
-
-        Client client = new Client(client_name, client_phone, client_address, password);
-
-        dbHandler.signUpUser(client);
     }
     public void openNewScene(String window){
+        backButton.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(window));
         try {
             loader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        backButton.getScene().getWindow().hide();
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
@@ -79,4 +51,3 @@ public class SignUpController {
     }
 
 }
-

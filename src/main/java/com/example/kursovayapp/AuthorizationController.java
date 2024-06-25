@@ -86,16 +86,14 @@ public class AuthorizationController {
     }
 
     public void openNewScene(String window){
-        loginSiginUpButton.getScene().getWindow().hide();
+
         FXMLLoader loader = new FXMLLoader(AuthorizationApplication.class.getResource(window));
-
-
         try {
             loader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
+        loginSiginUpButton.getScene().getWindow().hide();
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));

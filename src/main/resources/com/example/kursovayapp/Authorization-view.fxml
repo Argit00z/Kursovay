@@ -11,14 +11,14 @@
    <children>
       <AnchorPane layoutY="68.0" prefHeight="333.0" prefWidth="700.0" style="-fx-background-color: #F7EAC4;">
          <children>
-            <TextField fx:id="login_field" layoutX="203.0" layoutY="122.0" prefHeight="25.0" prefWidth="300.0" promptText="Номер телефона" style="-fx-border-color: #00000;" />
-            <PasswordField fx:id="password_field" layoutX="203.0" layoutY="154.0" prefHeight="25.0" prefWidth="300.0" promptText="Пароль" style="-fx-border-color: #00000;" />
+            <TextField fx:id="login_field" layoutX="203.0" layoutY="122.0" prefHeight="25.0" prefWidth="300.0" promptText="Номер телефона" style="-fx-border-color: #CECBC1; -fx-border-style: solid; -fx-border-radius: 5; -fx-background-color: #FFFFFF;" />
+            <PasswordField fx:id="password_field" layoutX="203.0" layoutY="154.0" prefHeight="25.0" prefWidth="300.0" promptText="Пароль" style="-fx-border-color: #CECBC1; -fx-border-style: solid; -fx-border-radius: 5; -fx-background-color: #FFFFFF;" />
             <Label layoutX="277.0" layoutY="68.0" prefHeight="39.0" prefWidth="152.0" text="Авторизация" textFill="#000000b8">
                <font>
                   <Font name="Arial" size="25.0" />
                </font>
             </Label>
-            <Button fx:id="authSiginButton" layoutX="301.0" layoutY="202.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="105.0" style="-fx-background-color: #F7F3E6; -fx-border-color: #E7C561; -fx-border-radius: 5;" text="Войти">
+            <Button fx:id="authSiginButton" layoutX="301.0" layoutY="202.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="105.0" style="-fx-background-color: #F7F3E6; -fx-border-color: #E7C561; -fx-border-radius: 5; -fx-border-style: solid;" text="Войти">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
@@ -29,7 +29,7 @@
             <Font name="Arial" size="40.0" />
          </font>
       </Label>
-      <Button fx:id="loginSiginUpButton" layoutX="570.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color: #F7F3E6;" text="Регистрация">
+      <Button fx:id="loginSiginUpButton" layoutX="570.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color: #F7F3E6; -fx-border-radius: 5; -fx-border-style: solid; -fx-border-color: #F7F3E6;" text="Регистрация">
          <font>
             <Font name="Arial" size="15.0" />
          </font></Button>
