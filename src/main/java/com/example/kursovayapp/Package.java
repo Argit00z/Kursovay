@@ -10,6 +10,10 @@ public class Package {
         this.weight_package = weight_package;
         this.urgency_package = urgency_package;
     }
+    public Package(String weight_package, String urgency_package) {
+        this.weight_package = weight_package;
+        this.urgency_package = urgency_package;
+    }
 
     public Package(){
 

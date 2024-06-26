@@ -1,10 +1,7 @@
 package com.example.kursovayapp;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
+import java.sql.*;
+
 public class DatabaseHandler extends Configs {
     Connection dbConnection;
 
@@ -37,11 +34,47 @@ public class DatabaseHandler extends Configs {
         }
     }
 
-//    public void addOrder(Order order){
-//        String insert = "INSERT INTO " + Const.ORDER_TABLE + "(" + Const.O + "," +
-//                Const.CLIENT_NAME + "," + Const.CLIENT_PASSWORD + "," + Const.CLIENT_PHONE + ")" +
-//                "VALUES(?,?,?,?)";
-//    }
+    public void addOrder(Order order){
+        String insert = "INSERT INTO " + Const.ORDER_TABLE + "(" + Const.CLIENT_ID + "," +
+                Const.PACKAGE_ID + "," + Const.COURIER_ID + "," + Const.CENTER_NAME + ")" +
+                "VALUES(?,?,?,?)";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(insert);
+            prSt.setString(1, order.getClient_id());
+            prSt.setString(2, order.getPackage_id());
+            prSt.setString(3, order.getCourier_id());
+            prSt.setString(4, order.getCenter_name());
+            prSt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public long addPackage(Package packag){
+        String insert = "INSERT INTO " + Const.PACKAGE_TABLE + "(" + Const.WEIGHT_PACKAGE + "," +
+                Const.URGENCY_PACKAGE + ")" + "VALUES(?,?)";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            prSt.setString(1, packag.getWeight_package());
+            prSt.setString(2, packag.getUrgency_package());
+            prSt.executeUpdate();
+            ResultSet generatedKeys = prSt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                // Возвращаем идентификатор новой записи
+                return generatedKeys.getLong(1);
+            } else {
+                // Если генерация ключа не удалась, возвращаем -1 или бросаем исключение
+                throw new SQLException("Не удалось получить идентификатор новой записи.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     public ResultSet getClient(Client client){
         ResultSet restSet = null;

@@ -14,6 +14,12 @@ public class Order {
         this.courier_id = courier_id;
         this.center_name = center_name;
     }
+    public Order(String client_id, String package_id, String courier_id, String center_name) {
+        this.client_id = client_id;
+        this.package_id = package_id;
+        this.courier_id = courier_id;
+        this.center_name = center_name;
+    }
 
     public Order(){
 
