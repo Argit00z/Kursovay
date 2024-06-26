@@ -14,11 +14,17 @@ import animations.Shake;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 
 public class UserController {
@@ -53,7 +59,7 @@ public class UserController {
     private Button sendPackageButton;
 
     @FXML
-    void initialize() {
+    void initialize() throws IOException {
         
         DatabaseHandler db = new DatabaseHandler();
         String select = "SELECT * FROM " + Const.CENTER_TABLE;
@@ -87,6 +93,8 @@ public class UserController {
             Client client = new Client();
             String query = "SELECT * FROM clients";
             client.setClient_phone(recipientPhoneNumberText);
+            Text textTrue = new Text(195, 150, "Заявка успешно отправлена!");
+            Text textFalse = new Text(195, 150, "Пользователь не найден");
             boolean flag = false;
             try {
                 PreparedStatement prSt = db.getDbConnection().prepareStatement(query);
@@ -105,10 +113,18 @@ public class UserController {
             if (flag){
                 addNewPackage();
                 addNewOrder();
+                rootpane.getChildren().remove(textTrue);
+
+                textTrue.setFill(Color.GREEN); // Цвет текста
+                textTrue.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+                rootpane.getChildren().add(textTrue);
+
+
             }else {
                 Shake phoneAnim = new Shake(recipientPhoneNumber);
 
                 phoneAnim.playAnim();
+                rootpane.getChildren().remove(textTrue);
 
             }
         });
@@ -182,6 +198,8 @@ public class UserController {
     public void openNewScene(String window) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource(window));
         rootpane.getChildren().setAll(pane);
+
+
     }
 
 

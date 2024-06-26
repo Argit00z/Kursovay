@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -32,6 +33,15 @@ public class SettingsController {
     private AnchorPane rootpane;
 
     @FXML
+    private PasswordField newPassword;
+
+    @FXML
+    private PasswordField oldPassword;
+
+    @FXML
+    private Button confirmButton;
+
+    @FXML
     void initialize() {
 
         backButton.setOnAction(event -> {
@@ -41,12 +51,20 @@ public class SettingsController {
                 throw new RuntimeException(e);
             }
         });
+
         quitButton.setOnAction(event -> {
             try {
                 openNewScene("Authorization-view.fxml");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        });
+
+        confirmButton.setOnAction(event -> {
+            String oldPass = oldPassword.getText().trim();
+            String newPass = newPassword.getText().trim();
+
+
         });
 
 
