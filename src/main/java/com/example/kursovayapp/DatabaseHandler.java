@@ -1,5 +1,7 @@
 package com.example.kursovayapp;
 
+import javafx.scene.control.Alert;
+
 import java.sql.*;
 
 public class DatabaseHandler extends Configs {
@@ -27,6 +29,12 @@ public class DatabaseHandler extends Configs {
             prSt.setString(3, client.getPassword());
             prSt.setString(4, client.getClient_phone());
             prSt.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Регистрация");
+
+            alert.setHeaderText("Регистрация");
+            alert.setContentText("Успешно!");
+            alert.showAndWait();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -86,8 +94,8 @@ public class DatabaseHandler extends Configs {
             PreparedStatement prSt = getDbConnection().prepareStatement(select);
             prSt.setString(1, client.getClient_phone());
             prSt.setString(2, client.getPassword());
-
             restSet = prSt.executeQuery();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

@@ -77,10 +77,7 @@ public class AuthorizationController {
         client.setClient_phone(loginText);
         client.setPassword(loginPassword);
         ResultSet result = dbHandler.getClient(client);
-
         int counter = 0;
-
-
         while (true) {
             try {
                 if (!result.next())

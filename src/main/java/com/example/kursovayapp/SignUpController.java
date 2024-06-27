@@ -49,7 +49,11 @@ public class SignUpController {
     void initialize() {
         authSiginButton.setOnAction(event -> {
 
-            singUpNewClient();
+            try {
+                singUpNewClient();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
         });
         backButton.setOnAction(event -> {
@@ -66,7 +70,7 @@ public class SignUpController {
 
 
 
-    private void singUpNewClient() {
+    private void singUpNewClient() throws IOException {
         DatabaseHandler dbHandler = new DatabaseHandler();
         String client_name = singUpName.getText();
         String client_phone = singUpPhoneNumber.getText();
@@ -76,6 +80,7 @@ public class SignUpController {
         Client client = new Client(client_name, client_phone, client_address, password);
 
         dbHandler.signUpUser(client);
+        openNewScene("Authorization-view.fxml");
     }
     public void openNewScene(String window) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource(window));

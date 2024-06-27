@@ -165,7 +165,7 @@ public class AdminController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Регистрация курьера");
 
-            alert.setHeaderText("Регистрация");
+            alert.setHeaderText("Удаление");
             alert.setContentText("Удалено!");
             alert.showAndWait();
             couriers();
@@ -198,7 +198,7 @@ public class AdminController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Регистрация курьера");
 
-            alert.setHeaderText("Регистрация курьера");
+            alert.setHeaderText("Обновление курьера");
             alert.setContentText("Обновлено!");
             alert.showAndWait();
             couriers();
