@@ -23,7 +23,7 @@ public class Const {
     public static final String COURIER_TABLE = "couriers";
 
     public static final String COURIER_ID = "courier_id";
-    public static final String COURIER_NAME = "courier_id";
+    public static final String COURIER_NAME = "courier_name";
     public static final String COURIER_PHONE = "courier_phone";
 // ----------------------------------------------------------------
     public static final String ORDER_TABLE = "orders";

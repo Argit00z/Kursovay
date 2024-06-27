@@ -5,6 +5,7 @@ public class Client {
     private String client_phone;
     private String client_address;
     private String password;
+    private String client_id;
 
 
     public Client(String client_name, String client_phone, String client_address, String password) {

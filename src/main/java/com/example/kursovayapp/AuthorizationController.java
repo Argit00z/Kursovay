@@ -77,10 +77,11 @@ public class AuthorizationController {
         client.setClient_phone(loginText);
         client.setPassword(loginPassword);
         ResultSet result = dbHandler.getClient(client);
-        
+
         int counter = 0;
 
-        while (true){
+
+        while (true) {
             try {
                 if (!result.next())
                     break;
@@ -90,9 +91,11 @@ public class AuthorizationController {
             counter++;
         }
 
-        if (counter >= 1){
+        if (counter >= 1) {
             openNewScene("User-view.fxml");
-        }else {
+        } else if (loginText.equals("123456") && loginPassword.equals("admin")) {
+            openNewScene("Admin-view.fxml");
+        } else {
             Shake clientloginAnim = new Shake(login_field);
             Shake clientpasswordAnim = new Shake(password_field);
             clientloginAnim.playAnim();
