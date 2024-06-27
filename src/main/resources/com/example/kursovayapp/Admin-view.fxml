@@ -13,7 +13,7 @@
     <children>
         <AnchorPane layoutY="68.0" prefHeight="333.0" prefWidth="700.0" style="-fx-background-color: #F7EAC4;">
             <children>
-                <Label layoutX="323.0" layoutY="14.0" prefHeight="39.0" prefWidth="152.0" text="Курьеры" textFill="#000000b8">
+                <Label layoutX="234.0" layoutY="14.0" prefHeight="39.0" prefWidth="152.0" text="Курьеры" textFill="#000000b8">
                     <font>
                         <Font name="Arial" size="25.0" />
                     </font>
@@ -49,6 +49,12 @@
                   <Font size="14.0" />
                </font>
             </Button>
+            <ChoiceBox fx:id="tableCheckBox" layoutX="539.0" layoutY="21.0" prefHeight="25.0" prefWidth="113.0" />
+            <Label layoutX="394.0" layoutY="14.0" prefHeight="39.0" prefWidth="152.0" text="Выберите таблицу:">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
         <Label layoutX="206.0" layoutY="16.0" text="Сервис доставки">

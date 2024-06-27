@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -61,6 +62,8 @@ public class AdminController {
     private TableView<Courier> couriers;
     @FXML
     private Button updateButton;
+    @FXML
+    private ChoiceBox<String> tableCheckBox;
 
     @FXML
     void Add(ActionEvent event) {
@@ -205,9 +208,9 @@ public class AdminController {
         }
     }
 
-    PreparedStatement pst;
-    int myIndex;
-    int id;
+    private PreparedStatement pst;
+    private int myIndex;
+    private int id;
 
     public void Connect() throws SQLException, ClassNotFoundException {
         DatabaseHandler db = new DatabaseHandler();
@@ -216,8 +219,28 @@ public class AdminController {
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
+        tableCheckBox.setValue("Курьеры");
+        tableCheckBox.getItems().addAll("Заказы", "Курьеры");
+        tableCheckBox.setOnAction(event -> {
+            if (tableCheckBox.getValue().equals("Заказы")){
+                try {
+                    openNewScene("OrdersTable-view.fxml");
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            } else if (tableCheckBox.getValue().equals("Курьеры")){
+                try {
+                    openNewScene("Admin-view.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
         Connect();
         couriers();
+
+
         DatabaseHandler db = new DatabaseHandler();
         String select = "SELECT * FROM " + Const.CENTER_TABLE;
 
@@ -241,6 +264,7 @@ public class AdminController {
                 throw new RuntimeException(e);
             }
         });
+
     }
 
     public void openNewScene(String window) throws IOException {

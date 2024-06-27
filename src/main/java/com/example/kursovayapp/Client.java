@@ -1,5 +1,7 @@
 package com.example.kursovayapp;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Client {
     private String client_name;
     private String client_phone;
@@ -16,7 +18,7 @@ public class Client {
     }
 
     public Client() {
-
+        
     }
 
     public String getClient_name() {

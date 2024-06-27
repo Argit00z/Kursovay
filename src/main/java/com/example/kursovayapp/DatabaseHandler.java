@@ -34,16 +34,16 @@ public class DatabaseHandler extends Configs {
         }
     }
 
-    public void addOrder(Order order){
+    public void addOrder(String client_id, String package_id, String courier_id, String center_name){
         String insert = "INSERT INTO " + Const.ORDER_TABLE + "(" + Const.CLIENT_ID + "," +
                 Const.PACKAGE_ID + "," + Const.COURIER_ID + "," + Const.CENTER_NAME + ")" +
                 "VALUES(?,?,?,?)";
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(insert);
-            prSt.setString(1, order.getClient_id());
-            prSt.setString(2, order.getPackage_id());
-            prSt.setString(3, order.getCourier_id());
-            prSt.setString(4, order.getCenter_name());
+            prSt.setString(1, client_id);
+            prSt.setString(2, package_id);
+            prSt.setString(3, courier_id);
+            prSt.setString(4, center_name);
             prSt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #F7D674;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kursovayapp.OrderTableController">
+    <children>
+        <AnchorPane layoutY="68.0" prefHeight="333.0" prefWidth="700.0" style="-fx-background-color: #F7EAC4;">
+            <children>
+                <Label layoutX="234.0" layoutY="14.0" prefHeight="39.0" prefWidth="152.0" text="Заказы" textFill="#000000b8">
+                    <font>
+                        <Font name="Arial" size="25.0" />
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="tableCheckBox" layoutX="539.0" layoutY="21.0" prefHeight="25.0" prefWidth="113.0" />
+                <Label layoutX="394.0" layoutY="14.0" prefHeight="39.0" prefWidth="152.0" text="Выберите таблицу:">
+                    <font>
+                        <Font name="Arial" size="14.0" />
+                    </font>
+                </Label>
+            <TableView fx:id="orders" layoutX="113.0" layoutY="87.0" prefHeight="216.0" prefWidth="521.0">
+              <columns>
+                <TableColumn fx:id="order_idCol" prefWidth="76.0" text="order_id" />
+                <TableColumn fx:id="client_idCol" prefWidth="102.0" text="client_id" />
+                  <TableColumn fx:id="package_idCol" prefWidth="102.0" text="package_id" />
+                  <TableColumn fx:id="courier_idCol" prefWidth="105.0" text="courier_id" />
+                  <TableColumn fx:id="center_nameCol" prefWidth="135.0" text="center_name" />
+              </columns>
+            </TableView>
+            </children>
+        </AnchorPane>
+        <Label layoutX="206.0" layoutY="16.0" text="Сервис доставки">
+            <font>
+                <Font name="Arial" size="40.0" />
+            </font>
+        </Label>
+        <Button fx:id="quitButton" layoutX="606.0" layoutY="16.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="80.0" style="-fx-background-color: #F7F3E6; -fx-border-color: #E7C561; -fx-border-radius: 5; -fx-border-style: solid;" text="Выйти">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>

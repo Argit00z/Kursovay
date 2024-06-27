@@ -2,10 +2,7 @@ package com.example.kursovayapp;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Objects;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -152,20 +149,6 @@ public class UserController {
         int counter = 0;
         Random r = new Random();
         DatabaseHandler dbHandler = new DatabaseHandler();
-        String select = "SELECT * FROM " + Const.COURIER_TABLE;
-        try {
-            PreparedStatement prSt = dbHandler.getDbConnection().prepareStatement(select);
-            ResultSet restSet = prSt.executeQuery(select);
-
-            while (restSet.next()) {
-                counter++;
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
         String recipientPhoneNumberText = recipientPhoneNumber.getText().trim();
         Client client = new Client();
         String query = "SELECT * FROM clients";
@@ -188,11 +171,44 @@ public class UserController {
         }
         String client_id = id_cl;
         String package_id = String.valueOf(packageNew_id);
-        System.out.println(String.valueOf((r.nextInt(counter - 1) + 1)));
-        String courier_id = String.valueOf((r.nextInt(counter - 1) + 1));
+        String courier_id = null;
+
         String center_name = centerName.getValue();
-        Order order = new Order(client_id, package_id, courier_id, center_name);
-        dbHandler.addOrder(order);
+
+        System.out.println(center_name);
+        String query1 = "SELECT * FROM " + Const.COURIER_TABLE;
+        String query2 = "SELECT * FROM " + Const.COURIER_TABLE + " WHERE " + Const.CENTER_NAME + " = " + "'" + center_name + "'";
+        try {
+            PreparedStatement prSt = dbHandler.getDbConnection().prepareStatement(query1);
+            ResultSet restSet = prSt.executeQuery(query1);
+            while (restSet.next()){
+                if(center_name.equals(restSet.getString(4))){
+                    counter++;
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            PreparedStatement prSt = dbHandler.getDbConnection().prepareStatement(query2);
+            ResultSet restSet = prSt.executeQuery(query2);
+            int rand = r.nextInt(counter - 1) + 1;
+            System.out.println(rand);
+            while (rand > 0){
+                restSet.next();
+                rand--;
+                courier_id = restSet.getString(1);
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        dbHandler.addOrder(client_id, package_id, courier_id, center_name);
     }
 
     public void openNewScene(String window) throws IOException {
