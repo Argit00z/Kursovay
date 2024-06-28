@@ -8,7 +8,7 @@ public class Courier {
     private final StringProperty courier_id;
     private final StringProperty courier_name;
     private final StringProperty courier_phone;
-    private final StringProperty center_name;
+    private final StringProperty get_center_name;
 
 
 
@@ -16,7 +16,7 @@ public class Courier {
         courier_id = new SimpleStringProperty(this, "courier_id");
         courier_name = new SimpleStringProperty(this, "courier_name");
         courier_phone = new SimpleStringProperty(this, "courier_phone");
-        center_name = new SimpleStringProperty(this, "center_name");
+        get_center_name = new SimpleStringProperty(this, "get_center_name");
     }
 
 
@@ -57,14 +57,14 @@ public class Courier {
     }
 
     public String getCenter_name() {
-        return center_name.get();
+        return get_center_name.get();
     }
 
     public StringProperty center_nameProperty() {
-        return center_name;
+        return get_center_name;
     }
 
     public void setCenter_name(String center_name) {
-        this.center_name.set(center_name);
+        this.get_center_name.set(center_name);
     }
 }

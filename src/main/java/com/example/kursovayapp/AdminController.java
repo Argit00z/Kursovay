@@ -75,7 +75,7 @@ public class AdminController {
         {
 
             pst = db.getDbConnection().prepareStatement("INSERT INTO " + Const.COURIER_TABLE +"(" + Const.COURIER_NAME + ", "
-                    + Const.COURIER_PHONE + ", " + Const.CENTER_NAME + ")" + "VALUES(?,?,?)");
+                    + Const.COURIER_PHONE + ", " + Const.GET_CENTER_NAME + ")" + "VALUES(?,?,?)");
             pst.setString(1, courier_name);
             pst.setString(2, courier_phone);
             pst.setString(3, center_name);
@@ -188,7 +188,7 @@ public class AdminController {
         {
             pst = db.getDbConnection().prepareStatement("UPDATE " + Const.COURIER_TABLE + " SET " +
                     Const.COURIER_NAME + " = ?, " + Const.COURIER_PHONE + " = ?, " +
-                    Const.CENTER_NAME + " = ? WHERE " + Const.COURIER_ID + " = ?");
+                    Const.GET_CENTER_NAME + " = ? WHERE " + Const.COURIER_ID + " = ?");
 
             pst.setString(1, courier_name);
             pst.setString(2, courier_phone);

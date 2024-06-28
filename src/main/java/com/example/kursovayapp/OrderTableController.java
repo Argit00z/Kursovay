@@ -32,13 +32,7 @@ public class OrderTableController {
     private ChoiceBox<String> tableCheckBox;
 
     @FXML
-    private TableColumn<Order, String> center_nameCol;
-
-    @FXML
     private TableColumn<Order, String> client_idCol;
-
-    @FXML
-    private TableColumn<Order, String> courier_idCol;
 
     @FXML
     private TableColumn<Order, String> order_idCol;
@@ -63,8 +57,6 @@ public class OrderTableController {
                     ord.setOrder_id(rs.getString(1));
                     ord.setClient_id(rs.getString(2));
                     ord.setPackage_id(rs.getString(3));
-                    ord.setCourier_id(rs.getString(4));
-                    ord.setCenter_name(rs.getString(5));
 
                     order.add(ord);
                 }
@@ -73,8 +65,6 @@ public class OrderTableController {
             order_idCol.setCellValueFactory(f -> f.getValue().order_idProperty());
             client_idCol.setCellValueFactory(f -> f.getValue().client_idProperty());
             package_idCol.setCellValueFactory(f -> f.getValue().package_idProperty());
-            courier_idCol.setCellValueFactory(f -> f.getValue().courier_idProperty());
-            center_nameCol.setCellValueFactory(f -> f.getValue().center_nameProperty());
 
         } catch (SQLException e)
         {

@@ -42,16 +42,14 @@ public class DatabaseHandler extends Configs {
         }
     }
 
-    public void addOrder(String client_id, String package_id, String courier_id, String center_name){
+    public void addOrder(String client_id, String package_id){
         String insert = "INSERT INTO " + Const.ORDER_TABLE + "(" + Const.CLIENT_ID + "," +
-                Const.PACKAGE_ID + "," + Const.COURIER_ID + "," + Const.CENTER_NAME + ")" +
-                "VALUES(?,?,?,?)";
+                Const.PACKAGE_ID + ")" +
+                "VALUES(?,?)";
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(insert);
             prSt.setString(1, client_id);
             prSt.setString(2, package_id);
-            prSt.setString(3, courier_id);
-            prSt.setString(4, center_name);
             prSt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -62,11 +60,13 @@ public class DatabaseHandler extends Configs {
 
     public long addPackage(Package packag){
         String insert = "INSERT INTO " + Const.PACKAGE_TABLE + "(" + Const.WEIGHT_PACKAGE + "," +
-                Const.URGENCY_PACKAGE + ")" + "VALUES(?,?)";
+                Const.URGENCY_PACKAGE + "," + Const.SEND_CENTER_NAME + "," + Const.COURIER_ID + ")" + " VALUES(?,?,?,?)";
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
             prSt.setString(1, packag.getWeight_package());
             prSt.setString(2, packag.getUrgency_package());
+            prSt.setString(3, packag.getSend_center_name());
+            prSt.setString(4, packag.getCourier_id());
             prSt.executeUpdate();
             ResultSet generatedKeys = prSt.getGeneratedKeys();
             if (generatedKeys.next()) {

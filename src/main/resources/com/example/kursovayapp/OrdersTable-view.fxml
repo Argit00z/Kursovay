@@ -26,10 +26,8 @@
             <TableView fx:id="orders" layoutX="113.0" layoutY="87.0" prefHeight="216.0" prefWidth="521.0">
               <columns>
                 <TableColumn fx:id="order_idCol" prefWidth="76.0" text="order_id" />
-                <TableColumn fx:id="client_idCol" prefWidth="102.0" text="client_id" />
-                  <TableColumn fx:id="package_idCol" prefWidth="102.0" text="package_id" />
-                  <TableColumn fx:id="courier_idCol" prefWidth="105.0" text="courier_id" />
-                  <TableColumn fx:id="center_nameCol" prefWidth="135.0" text="center_name" />
+                <TableColumn fx:id="client_idCol" prefWidth="209.0" text="client_id" />
+                  <TableColumn fx:id="package_idCol" prefWidth="235.0" text="package_id" />
               </columns>
             </TableView>
             </children>

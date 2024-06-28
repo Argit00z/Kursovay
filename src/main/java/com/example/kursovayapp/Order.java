@@ -4,19 +4,15 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Order {
-    private StringProperty order_id;
-    private StringProperty client_id;
-    private StringProperty package_id;
-    private StringProperty courier_id;
-    private StringProperty center_name;
+    private final StringProperty order_id;
+    private final StringProperty client_id;
+    private final StringProperty package_id;
 
 
     public Order(){
         order_id = new SimpleStringProperty(this, "order_id");
-        courier_id = new SimpleStringProperty(this, "courier_id");
         client_id = new SimpleStringProperty(this, "client_id");
         package_id = new SimpleStringProperty(this, "package_id");
-        center_name = new SimpleStringProperty(this, "center_name");
     }
 
     public String getOrder_id() {
@@ -55,27 +51,4 @@ public class Order {
         this.package_id.set(package_id);
     }
 
-    public String getCourier_id() {
-        return courier_id.get();
-    }
-
-    public StringProperty courier_idProperty() {
-        return courier_id;
-    }
-
-    public void setCourier_id(String courier_id) {
-        this.courier_id.set(courier_id);
-    }
-
-    public String getCenter_name() {
-        return center_name.get();
-    }
-
-    public StringProperty center_nameProperty() {
-        return center_name;
-    }
-
-    public void setCenter_name(String center_name) {
-        this.center_name.set(center_name);
-    }
 }

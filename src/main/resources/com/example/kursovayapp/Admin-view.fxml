@@ -23,7 +23,7 @@
                 <TableColumn fx:id="courier_idCol" prefWidth="77.0" text="courier_id" />
                 <TableColumn fx:id="courier_nameCol" prefWidth="139.0" text="courier_name" />
                   <TableColumn fx:id="courier_phoneCol" prefWidth="124.0" text="courier_phone" />
-                  <TableColumn fx:id="center_nameCol" prefWidth="147.0" text="center_name" />
+                  <TableColumn fx:id="center_nameCol" prefWidth="147.0" text="get_center_name" />
               </columns>
             </TableView>
             <TextField fx:id="courierNameField" layoutX="26.0" layoutY="65.0" prefHeight="27.0" prefWidth="113.0" promptText="courier_name" style="-fx-border-color: #CECBC1; -fx-border-radius: 5; -fx-border-style: solid; -fx-background-color: white;" />
